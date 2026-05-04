@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple PiP Trigger</title>
+</head>
+<body>
+	<h1>Klik di mana saja untuk memicu PiP</h1>
+	<script>
+		// Harus dipicu oleh interaksi user (klik)
+		window.onclick = async () => {
+			try {
+				// Membuka jendela Document Picture-in-Picture (PiP) kosong
+				const pipWindow = await documentPictureInPicture.requestWindow({
+					width: 300,
+					height: 400
+				});
+				
+				// Mengisi jendela PiP dengan teks
+				pipWindow.document.body.innerHTML = "<h3>Ini jendela PiP!</h3>";
+				
+			} catch (err) {
+				alert("PiP diblokir atau tidak didukung (harus jalan di localhost/HTTPS). Error: " + err);
+			}
+		};
+	</script>
+</body>
+</html>
